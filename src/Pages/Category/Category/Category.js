@@ -5,7 +5,7 @@ import Products from '../../Products/Products/Products';
 const Category = () => {
     const categoryNews = useLoaderData();
     return (
-        <div className='max-w-screen-xl mx-auto'>
+        <div className='max-w-screen-xl mx-auto py-20'>
             <h1>This is Category: {categoryNews.length}</h1>
             {
                 categoryNews.map(product => <Products 
