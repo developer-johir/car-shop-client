@@ -1,16 +1,18 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import Products from '../../Products/Products/Products';
 
 const Category = () => {
     const categoryNews = useLoaderData();
     return (
-        <div>
+        <div className='max-w-screen-xl mx-auto'>
             <h1>This is Category: {categoryNews.length}</h1>
             {
-                categoryNews.map(product => <p key={product._id}>
-                    {product.title}
-                    <img className='mx-auto mt-5 mb-10' src={product.image} alt="separator-1"/>
-                </p>)
+                categoryNews.map(product => <Products 
+                    key={product._id}
+                    product={product}
+                    >
+                </Products>)
             }
         </div>
     );
