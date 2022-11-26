@@ -1,6 +1,6 @@
 import React from "react";
 
-const Products = ({ product }) => {
+const Products = ({ product, setCar }) => {
   const { image, title, location, resale_price, original_price, used, posted, seller_name } = product;
   return (
     <div className="mt-10">
@@ -13,8 +13,8 @@ const Products = ({ product }) => {
           <h2><span className="font-semibold text-lg">Location:</span> {location}</h2>
 
           <div className="md:flex justify-between">
-          <h3 className="text-lg"><span className="font-semibold">Resale_price:</span> <span className="text-red-600">${resale_price}</span></h3>
-          <h4 className="text-lg"><span className="font-semibold">Original_price:</span> <span className="text-red-600">${original_price}</span></h4>
+          <h3 className="text-lg"><span className="font-semibold">Resale_price:</span> <span className="text-red-600">{resale_price}</span></h3>
+          <h4 className="text-lg"><span className="font-semibold">Original_price:</span> <span className="text-red-600">{original_price}</span></h4>
           </div>
 
           <div className="md:flex justify-between">
@@ -24,7 +24,11 @@ const Products = ({ product }) => {
 
           <h2 className="text-lg"><span className="font-semibold">Seller_name:</span> <span>{seller_name}</span></h2>
           <div className="card-actions justify-end">
-          <button className="btn bg-blue-700 text-white rounded-lg border-none mt-5">Book now</button>
+          <label 
+          htmlFor="booknow-modal" 
+          className="btn bg-blue-700 text-white rounded-lg border-none mt-5"
+          onClick={() => setCar(product)}
+          >Book now</label>
           </div>
         </div>
       </div>

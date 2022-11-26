@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
+import BookNowModal from "../../Products/BookNowModal/BookNowModal";
 import Products from "../../Products/Products/Products";
 
 const Category = () => {
-  const categoryNews = useLoaderData();
+  const categoryProduct = useLoaderData();
+  const [car, setCar] = useState(null);
   return (
-    <div className="max-w-screen-xl mx-auto pb-20">
+    <div>
+      <div className="max-w-screen-xl mx-auto pb-20">
       <div className="text-center">
       <h1 className="text-center text-3xl font-bold text-red-600 mt-14 mb-3">
         Second-hand Products
@@ -17,9 +20,22 @@ const Category = () => {
         alt="separator-1"
       />
       </div>
-      {categoryNews.map((product) => (
-        <Products key={product._id} product={product}></Products>
+      {categoryProduct.map((product) => (
+        <Products 
+        key={product._id} 
+        product={product}
+        setCar={setCar}
+        ></Products>
       ))}
+    </div>
+    {
+      car &&
+      <BookNowModal
+      car={car}
+      setCar={setCar}
+      categoryProduct={categoryProduct}
+     ></BookNowModal>
+    }
     </div>
   );
 };
