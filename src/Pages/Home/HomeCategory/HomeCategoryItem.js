@@ -13,7 +13,7 @@ const HomeCategoryItem = () => {
   return (
     <div className="max-w-screen-xl mx-auto py-20">
       <div className="categor-title text-center">
-        <h2 className="text-3xl font-bold text-red-600 mb-3">Top Category</h2>
+        <h2 className="text-3xl font-bold text-red-600 mb-3">Product Category</h2>
         <p>
           We welcome feedback: you can select the flag against a sentence to report it.
         </p>
