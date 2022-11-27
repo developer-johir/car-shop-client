@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../../contexts/AuthProvider';
+import Spinner from '../../Spinner/Spinner';
 import './HomeCategory.css'
 
 const HomeCategory = ({category}) => {
+    const {loading} = useContext(AuthContext);
     const {name, img} = category;
+
+    if(loading){
+        return <Spinner></Spinner>
+    }
     return (
         <div>
             <div className="team-section">

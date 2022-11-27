@@ -1,15 +1,26 @@
-import React, { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import HomeCategory from "./HomeCategory";
 
 const HomeCategoryItem = () => {
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState(null);
 
-  useEffect(() => {
-    fetch("https://car-shop-server.vercel.app/categories")
-      .then((res) => res.json())
-      .then((data) => setCategories(data));
-  }, []);
+  const {data : categoryOptions = []} = useQuery({
+    queryKey: ['categoryOptions'],
+    queryFn: async() => {
+      const res = await fetch('https://car-shop-server.vercel.app/categories');
+      const data = await res.json();
+      return data
+    }
+  })
+
+  // useEffect(() => {
+  //   fetch("https://car-shop-server.vercel.app/categories")
+  //     .then((res) => res.json())
+  //     .then((data) => setCategories(data));
+  // }, []);
+
   return (
     <div className="max-w-screen-xl mx-auto py-20">
       <div className="categor-title text-center">
@@ -24,9 +35,12 @@ const HomeCategoryItem = () => {
         />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center ">
-        {categories.map((category) => (
+        {categoryOptions.map((category) => (
           <Link to={`/category/${category.id}`}>
-            <HomeCategory key={category.id} category={category}></HomeCategory>
+            <HomeCategory key={category.id}
+             category={category}
+             setCategories={setCategories}
+             ></HomeCategory>
           </Link>
         ))}
       </div>

@@ -1,11 +1,19 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useLoaderData } from "react-router-dom";
+import { AuthContext } from "../../../contexts/AuthProvider";
 import BookNowModal from "../../Products/BookNowModal/BookNowModal";
 import Products from "../../Products/Products/Products";
+import Spinner from "../../Spinner/Spinner";
 
 const Category = () => {
+  const {loading} = useContext(AuthContext);
   const categoryProduct = useLoaderData();
   const [car, setCar] = useState(null);
+
+  if(loading){
+    return <Spinner></Spinner>
+}
+
   return (
     <div>
       <div className="max-w-screen-xl mx-auto pb-20">

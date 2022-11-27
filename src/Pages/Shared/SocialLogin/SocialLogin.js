@@ -17,7 +17,7 @@ const SocialLogin = () => {
   };
 
   return (
-    <div onClick={handleGoogleSignIn} className="flex justify-items-center justify-center bg-amber-500 w-72 py-2 mx-auto mt-10 rounded-lg">
+    <div onClick={handleGoogleSignIn} className="flex justify-items-center justify-center bg-amber-500 w-full py-2 mx-auto mt-10 rounded-lg">
         <img className="w-8 h-8" src="https://statesoftwater.com/wp-content/uploads/new-google-favicon-256.png" alt="" />
         <p className="">
         <button className="text-2xl ml-3">

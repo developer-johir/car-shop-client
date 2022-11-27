@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import toast from "react-hot-toast";
+import { AuthContext } from "../../../contexts/AuthProvider";
 
 const BookNowModal = ({ car, setCar }) => {
   const { title, resale_price } = car;
+  const {user} = useContext(AuthContext);
 
   const handleBookNow = (event) => {
     event.preventDefault();
@@ -20,8 +23,24 @@ const BookNowModal = ({ car, setCar }) => {
         number,
         location
       };
-    console.log(bookNow);
-    setCar(null);
+
+      fetch('http://localhost:5000/product', {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify(bookNow)
+      })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        if(data.acknowledged){
+          setCar(null);
+          toast.success('Order Complete')
+        }
+      })
+
+    
   };
 
   return (
@@ -41,6 +60,7 @@ const BookNowModal = ({ car, setCar }) => {
             <form onSubmit={handleBookNow} className="grid grid-cols-1 gap-3 mt-5">
               <input
                 type="text"
+                defaultValue={user?.displayName}
                 disabled
                 placeholder="Full Name"
                 name="name"
@@ -48,6 +68,7 @@ const BookNowModal = ({ car, setCar }) => {
               />
               <input
                 type="email"
+                defaultValue={user?.email}
                 disabled
                 placeholder="Email"
                 name="email"
