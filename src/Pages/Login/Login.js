@@ -1,14 +1,42 @@
-import React, { useState } from "react";
+// import React, { useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthProvider";
 
 const Login = () => {
-  const { register, handleSubmit } = useForm();
-  const [data, setData] = useState("");
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
+  const { signIn } = useContext(AuthContext);
+  const [loginError, setLoginError] = useState('');
+  // const [loginUserEmail, setLoginUserEmail] = useState('');
+  // const [token] = useToken(loginUserEmail);
+  // const location = useLocation();
+  // const navigate = useNavigate();
+
+  const handleLogin = (data) => {
+    console.log(data);
+    setLoginError('');
+    console.log(data);
+    signIn(data.email, data.password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        // setLoginUserEmail(data.email);
+      })
+      .catch((error) => {
+        console.log(error.message);
+        setLoginError(error.message);
+      });
+  };
   return (
     <div className="flex justify-center items-center py-20">
       <div className="w-96 px-8 py-14 shadow-2xl rounded-lg">
         <h1 className="text-4xl text-center mb-8">Login</h1>
-        <form onSubmit={handleSubmit((data) => setData(JSON.stringify(data)))}>
+        <form onSubmit={handleSubmit(handleLogin)}>
           <div className="form-control w-full">
             <label className="label">
               <span className="label-text">Email</span>
@@ -16,29 +44,55 @@ const Login = () => {
             <input
               type="email"
               {...register("email", { required: "Email Address is required" })}
-              className="input input-bordered w-full rounded-lg"
+              className="input input-bordered w-full rounded-lg max-w-xs"
             />
+            {errors.email && (
+              <p className="text-red-500" role="alert">
+                {errors.email?.message}
+              </p>
+            )}
             <label className="label mt-4">
               <span className="label-text">Password</span>
             </label>
             <input
               type="password"
-              {...register("password", { required: "Password is required" })}
-              className="input input-bordered w-full rounded-lg"
+              {...register("password", {
+                required: "Password is required",
+                minLength: {
+                  value: 6,
+                  message: "Password must be 6 characters of longer",
+                },
+              })}
+              className="input input-bordered w-full rounded-lg max-w-xs"
             />
-            <label className="label cursor-pointer mt-4">
-              <span className="label-text">Remember me</span>
-              <input type="checkbox" className="toggle" checked />
-            </label>
-            <select className="select select-bordered w-full rounded-lg mt-4">
-              <option disabled selected>
-                Who shot first?
-              </option>
-              <option>Han Solo</option>
-              <option>Greedo</option>
-            </select>
+            {errors.password && (
+              <p className="text-red-500" role="alert">
+                {errors.password?.message}
+              </p>
+            )}
           </div>
-          <input type="submit" />
+          <button
+            className="btn bg-blue-600 w-full mt-7 text-white"
+            value="login"
+            type="login"
+          >
+            login
+          </button>
+          <div>{loginError && <p className="text-red-500">{loginError}</p>}</div>
+          <p className="mt-2 text-sm">
+            New to Doctors Portal?{" "}
+            <Link to="/signup" className="text-secondary">
+              Create new account
+            </Link>{" "}
+          </p>
+          <div className="divider">OR</div>
+          <button
+            className="btn btn-outline text-lg w-full mt-3"
+            value="login"
+            type="login"
+          >
+            CONTINUE WITH GOOGLE
+          </button>
         </form>
       </div>
     </div>

@@ -1,36 +1,35 @@
-// import React, { useContext } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/logo.png'
-// import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import { AuthContext } from '../../../contexts/AuthProvider';
 
 const Header = () => {
+  const {user, logout} = useContext(AuthContext);
 
-//   const {user, logOut} = useContext(AuthContext);
+  const handleLogOut = () => {
+    logout()
+      .then(() => {})
+      .catch((err) => console.log(err));
+  };
 
-//   const handleLogOut = () => {
-//     logOut()
-//       .then()
-//       .catch();
-//   }
-
-    const menuItems = <>
-        <li className='font-semibold'><Link to="/">Home</Link></li>
+    const menuItems = <React.Fragment>
+      <li className='font-semibold'><Link to="/">Home</Link></li>
         <li className='font-semibold'><Link to="/blog">Blog</Link></li>
-        <li className='font-semibold'><Link to="/login">Login</Link></li>
-        {/* {
-          user?.email ?
-          <>
-            <li className='font-semibold'><Link to="/reviews">My Reviews</Link></li>
-            <li className='font-semibold'><Link to="/addservice">Add Service</Link></li>
-            <li className='font-semibold'><Link to="/seemore">See More</Link></li>
-            <li className='font-semibold'>
-              <button onClick={handleLogOut} className='btn-ghost'>Log Out</button>
-              </li>
-          </>
-          :
-          <li className='font-semibold'><Link to="/login">Login</Link></li>
-        } */}
-    </>
+        {user?.uid ? (
+        <>
+          <li>
+            <Link to="/dashboard">Dashboard</Link>
+          </li>
+          <li>
+            <button onClick={handleLogOut}>Log out</button>
+          </li>
+        </>
+      ) : (
+        <li>
+          <Link to="/login">Login</Link>
+        </li>
+      )}
+    </React.Fragment>
 
     return (
         <div className='max-w-screen-xl mx-auto py-3'>
