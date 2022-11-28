@@ -4,7 +4,7 @@ import { AuthContext } from "../../../contexts/AuthProvider";
 
 const BookNowModal = ({ car, setCar }) => {
   const { title, resale_price } = car;
-  const {user} = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
   const handleBookNow = (event) => {
     event.preventDefault();
@@ -16,31 +16,29 @@ const BookNowModal = ({ car, setCar }) => {
     const location = form.location.value;
 
     const bookNow = {
-        product: title,
-        user: name,
-        email,
-        price,
-        number,
-        location
-      };
+      product: title,
+      user: name,
+      email,
+      price,
+      number,
+      location,
+    };
 
-      fetch('http://localhost:5000/product', {
-        method: 'POST',
-        headers: {
-          'content-type': 'application/json'
-        },
-        body: JSON.stringify(bookNow)
-      })
-      .then(res => res.json())
-      .then(data => {
+    fetch("https://car-shop-server-developer-johir.vercel.app/product", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(bookNow),
+    })
+      .then((res) => res.json())
+      .then((data) => {
         console.log(data);
-        if(data.acknowledged){
+        if (data.acknowledged) {
           setCar(null);
-          toast.success('Order Complete')
+          toast.success("Order Complete");
         }
-      })
-
-    
+      });
   };
 
   return (

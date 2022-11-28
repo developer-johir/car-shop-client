@@ -6,17 +6,19 @@ import HomeCategory from "./HomeCategory";
 const HomeCategoryItem = () => {
   const [categories, setCategories] = useState(null);
 
-  const {data : categoryOptions = []} = useQuery({
-    queryKey: ['categoryOptions'],
-    queryFn: async() => {
-      const res = await fetch('https://car-shop-server.vercel.app/categories');
+  const { data: categoryOptions = [] } = useQuery({
+    queryKey: ["categoryOptions"],
+    queryFn: async () => {
+      const res = await fetch(
+        "https://car-shop-server-developer-johir.vercel.app/categories"
+      );
       const data = await res.json();
-      return data
-    }
-  })
+      return data;
+    },
+  });
 
   // useEffect(() => {
-  //   fetch("https://car-shop-server.vercel.app/categories")
+  //   fetch("https://car-shop-server-developer-johir.vercel.app/categories")
   //     .then((res) => res.json())
   //     .then((data) => setCategories(data));
   // }, []);
@@ -37,10 +39,11 @@ const HomeCategoryItem = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center ">
         {categoryOptions.map((category) => (
           <Link to={`/category/${category.id}`}>
-            <HomeCategory key={category.id}
-             category={category}
-             setCategories={setCategories}
-             ></HomeCategory>
+            <HomeCategory
+              key={category.id}
+              category={category}
+              setCategories={setCategories}
+            ></HomeCategory>
           </Link>
         ))}
       </div>

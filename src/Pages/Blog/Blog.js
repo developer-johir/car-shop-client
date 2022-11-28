@@ -15,11 +15,11 @@ const Blog = () => {
       </div>
       <div className="mt-6">
         <h4 className="text-xl">
-          <span class="text-primary font-bold">Question-1:</span> What are the different
+          <span className="text-primary font-bold">Question-1:</span> What are the different
           ways to manage a state in a React application?
         </h4>
         <p>
-          <span class="text-yellow-400 font-bold">Answer:- </span>
+          <span className="text-yellow-400 font-bold">Answer:- </span>
           There are two accepted models for state management: the front-end -- or
           client-side -- and back-end -- or server/application-side models. There are four
           main types of state you need to properly manage in your React apps: 1.Local
@@ -28,11 +28,11 @@ const Blog = () => {
       </div>
       <div className="mt-4">
         <h4 className="text-xl">
-          <span class="text-primary font-bold">Question-2:</span> How does prototypical
+          <span className="text-primary font-bold">Question-2:</span> How does prototypical
           inheritance work?
         </h4>
         <p>
-          <span class="text-yellow-400 font-bold">Answer:- </span>
+          <span className="text-yellow-400 font-bold">Answer:- </span>
           The Prototypal Inheritance is a feature in javascript used to add methods and
           properties in objects. It is a method by which an object can inherit the
           properties and methods of another object. Traditionally, in order to get and set
@@ -41,11 +41,11 @@ const Blog = () => {
       </div>
       <div className="mt-4">
         <h4 className="text-xl">
-          <span class="text-primary font-bold">Question-3:</span> What is a unit test? Why
+          <span className="text-primary font-bold">Question-3:</span> What is a unit test? Why
           should we write unit tests?
         </h4>
         <p>
-          <span class="text-yellow-400 font-bold">Answer:- </span>A unit test is of
+          <span className="text-yellow-400 font-bold">Answer:- </span>A unit test is of
           testing a unit - the smallest piece of code that can be logically isolated in a
           system. In most programming languages, that is a function, a subroutine, a
           method or property. The isolated part of the definition is important. The main
@@ -57,10 +57,10 @@ const Blog = () => {
       </div>
       <div className="mt-4">
         <h4 className="text-xl">
-          <span class="text-primary font-bold">Question-4:</span> React vs. Angular vs. Vue?
+          <span className="text-primary font-bold">Question-4:</span> React vs. Angular vs. Vue?
         </h4>
         <p>
-          <span class="text-yellow-400 font-bold">Answer:- </span>
+          <span className="text-yellow-400 font-bold">Answer:- </span>
           Vue provides higher customizability and hence is easier to learn than Angular or React. Further, Vue has an overlap with Angular and React with respect to their functionality like the use of components. Hence, the transition to Vue from either of the two is an easy option.
         </p>
       </div>

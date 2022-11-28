@@ -1,13 +1,13 @@
 import React, { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthProvider";
-// import useAdmin from "../hooks/useAdmin";
+import useAdmin from "../hooks/useAdmin";
 import Footer from "../Pages/Shared/Footer/Footer";
 import Header from "../Pages/Shared/Header/Header";
 
 const DashboardLayout = () => {
   const {user} = useContext(AuthContext);
-  // const [isAdmin] = useAdmin(user?.email)
+  const [isAdmin] = useAdmin(user?.email)
   return (
     <div className="max-w-screen-xl mx-auto">
       <Header></Header>
@@ -23,13 +23,14 @@ const DashboardLayout = () => {
             <li>
               <Link to="/dashboard">My All Products</Link>
             </li>
-            {/* {
+            <li><Link to="/dashboard/allusers">All Users</Link></li>
+                <li><Link to="/dashboard/allusers">my Product</Link></li>
+            {
               isAdmin && <>
-                <li><Link to="/dashboard/allUsers">All Users</Link></li>
-                <li><Link to="/dashboard/adddoctor">Add Doctor</Link></li>
-                <li><Link to="/dashboard/managedoctor">Manage Doctors</Link></li>
+                <li><Link to="/dashboard/allusers">All Users</Link></li>
+                <li><Link to="/dashboard/allusers">my Product</Link></li>
               </>
-            } */}
+            }
           </ul>
         </div>
       </div>
