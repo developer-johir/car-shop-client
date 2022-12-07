@@ -1,6 +1,11 @@
 1. Name: Car-Shop
 2. Live Link: https://car-shop-a6d82.web.app/
 3. Email: developerjohir2@gmail.com
+4. Password: J567567l
+5. This is a second-hand Car selling and buying website. Here, the seller can add a product and delete this product. And he/she can add this product in the advertising section.
+6. Admin can verify every seller, and delete buyer, seller, and reported items.
+7. Buyers can check the available product descriptions and can contact the seller and can pay via cards.
+8. Technology: ReactJs, React router, Tailwind, Firebase, NodeJs, ExpressJs, MongoDB.
 
 # Getting Started with Create React App
 
