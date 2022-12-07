@@ -1,20 +1,6 @@
 ● Name: Car-Shop
 ● Live Link: https://car-shop-a6d82.web.app/
 ● Email: developerjohir2@gmail.com
-● Password: J567567l
-● This is a second-hand Car selling and buying website. Here, the seller can add a product and delete this product. And he/she can add this product in the advertising section.
-● Admin can verify every seller, and delete buyer, seller, and reported items.
-● Buyers can check the available product descriptions and can contact the seller and can pay via cards.
-● Technology: ReactJs, React router, Tailwind, Firebase, NodeJs, ExpressJs, MongoDB.
-● npx create-react-app genius-car-client
-● npm install react-router-dom
-● npm install -D tailwindcss postcss autoprefixer
-● Router setup
-● Create the component folder structure
-● Loaded the data into MongoDB
-● Three service cards are displayed on the home page and all
-● cards are displayed on the services page
-● Firebase is deployed
 
 # Getting Started with Create React App
 
