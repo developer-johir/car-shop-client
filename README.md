@@ -1,6 +1,6 @@
-● Name: Car-Shop
-● Live Link: https://car-shop-a6d82.web.app/
-● Email: developerjohir2@gmail.com
+1. Name: Car-Shop
+2. Live Link: https://car-shop-a6d82.web.app/
+3. Email: developerjohir2@gmail.com
 
 # Getting Started with Create React App
 
